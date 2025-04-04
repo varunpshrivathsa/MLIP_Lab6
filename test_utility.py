@@ -37,5 +37,15 @@ def feature_target_sample(housing_data_sample):
 
 def test_data_split(feature_target_sample):
     return_tuple = data_split(*feature_target_sample)
-    # TODO test if the length of return_tuple is 4
-    raise NotImplemented
+    
+    # Check if the returned value is a tuple of 4 elements
+    assert isinstance(return_tuple, tuple), "Returned value should be a tuple"
+    assert len(return_tuple) == 4, "Returned tuple should have exactly 4 elements"
+
+    X_train, X_test, y_train, y_test = return_tuple
+
+    # Check shapes
+    assert len(X_train) > 0, "X_train should not be empty"
+    assert len(X_test) > 0, "X_test should not be empty"
+    assert len(y_train) > 0, "y_train should not be empty"
+    assert len(y_test) > 0, "y_test should not be empty"
